@@ -109,6 +109,7 @@ public class StoreServiceImpl implements StoreService {
 		s.setPropreitor(result.getPropreitor());
 		s.setStoreAddress(result.getStoreAddress());
 		s.setStoreSettings(result.getStoreSettings());
+		storeSearchRepository.save(s);
 		
 	}
 
