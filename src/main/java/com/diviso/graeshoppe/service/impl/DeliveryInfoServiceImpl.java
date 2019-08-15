@@ -2,6 +2,7 @@ package com.diviso.graeshoppe.service.impl;
 
 import com.diviso.graeshoppe.service.DeliveryInfoService;
 import com.diviso.graeshoppe.domain.DeliveryInfo;
+import com.diviso.graeshoppe.domain.Store;
 import com.diviso.graeshoppe.repository.DeliveryInfoRepository;
 import com.diviso.graeshoppe.repository.search.*;
 import com.diviso.graeshoppe.service.dto.DeliveryInfoDTO;
@@ -14,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.Optional;
 
 import static org.elasticsearch.index.query.QueryBuilders.*;
@@ -52,8 +54,26 @@ public class DeliveryInfoServiceImpl implements DeliveryInfoService {
         deliveryInfo = deliveryInfoRepository.save(deliveryInfo);
         DeliveryInfoDTO result = deliveryInfoMapper.toDto(deliveryInfo);
        // deliveryInfoSearchRepository.save(deliveryInfo);
+        setDeliveryInfoDetails(deliveryInfo );
         return result;
     }
+    public void setDeliveryInfoDetails(DeliveryInfo result) {
+		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"+result);
+		com.diviso.graeshoppe.domain.search.DeliveryInfo s=new com.diviso.graeshoppe.domain.search.DeliveryInfo();
+
+		s.setId(result.getId());
+
+	    s.setStartingTime(Date.from(result.getStartingTime()));
+
+		s.setEndTime(Date.from(result.getEndTime()));
+
+		
+		System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"+s);
+		com.diviso.graeshoppe.domain.search.DeliveryInfo d=deliveryInfoSearchRepository.save(s);
+		
+		System.out.println("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"+d);
+	}
+
 
     /**
      * Get all the deliveryInfos.

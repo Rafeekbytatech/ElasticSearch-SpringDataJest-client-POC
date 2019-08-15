@@ -1,6 +1,6 @@
 package com.diviso.graeshoppe.repository.search;
 
-import com.diviso.graeshoppe.domain.*;
+import com.diviso.graeshoppe.domain.search.*;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 
 /**
