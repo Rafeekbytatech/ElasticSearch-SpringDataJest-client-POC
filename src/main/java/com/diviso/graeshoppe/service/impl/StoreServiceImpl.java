@@ -75,6 +75,7 @@ public class StoreServiceImpl implements StoreService {
 	
 	
 	public void setStoreDetails(Store result) {
+		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"+result);
 		com.diviso.graeshoppe.domain.search.Store s=new com.diviso.graeshoppe.domain.search.Store();
 
 		s.setId(result.getId());
@@ -109,8 +110,10 @@ public class StoreServiceImpl implements StoreService {
 		s.setPropreitor(result.getPropreitor());
 		s.setStoreAddress(result.getStoreAddress());
 		s.setStoreSettings(result.getStoreSettings());
-		storeSearchRepository.save(s);
+		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"+s);
+		com.diviso.graeshoppe.domain.search.Store d=storeSearchRepository.save(s);
 		
+		System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"+d);
 	}
 
 	/**
