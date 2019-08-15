@@ -1,4 +1,6 @@
-/*package com.diviso.graeshoppe.domain.search;
+package com.diviso.graeshoppe.domain.search;
+import com.diviso.graeshoppe.domain.Type;
+import com.diviso.graeshoppe.domain.search.Store;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -7,13 +9,13 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import javax.persistence.*;
 
 import java.io.Serializable;
-import java.time.Instant;
+import java.util.*;
 
-*//**
- * A ElDeliveryInfo.
- *//*
-@Document(indexName = "eldeliveryinfo")
-public class ElDeliveryInfo implements Serializable {
+/**
+ * A DeliveryInfo.
+ */
+@Document(indexName = "deliveryinfo")
+public class DeliveryInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -22,18 +24,18 @@ public class ElDeliveryInfo implements Serializable {
     private Long id;
 
     @Column(name = "starting_time")
-    private Instant startingTime;
+    private Date startingTime;
 
     @Column(name = "end_time")
-    private Instant endTime;
+    private Date endTime;
 
     @ManyToOne
-    @JsonIgnoreProperties("elDeliveryInfos")
-    private ElStore elStore;
+    @JsonIgnoreProperties("DeliveryInfos")
+    private Store Store;
 
     @ManyToOne
-    @JsonIgnoreProperties("elDeliveryInfos")
-    private ElType elType;
+    @JsonIgnoreProperties("DeliveryInfos")
+    private Type Type;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -44,57 +46,57 @@ public class ElDeliveryInfo implements Serializable {
         this.id = id;
     }
 
-    public Instant getStartingTime() {
+    public Date getStartingTime() {
         return startingTime;
     }
 
-    public ElDeliveryInfo startingTime(Instant startingTime) {
+    public DeliveryInfo startingTime(Date startingTime) {
         this.startingTime = startingTime;
         return this;
     }
 
-    public void setStartingTime(Instant startingTime) {
+    public void setStartingTime(Date startingTime) {
         this.startingTime = startingTime;
     }
 
-    public Instant getEndTime() {
+    public Date getEndTime() {
         return endTime;
     }
 
-    public ElDeliveryInfo endTime(Instant endTime) {
+    public DeliveryInfo endTime(Date endTime) {
         this.endTime = endTime;
         return this;
     }
 
-    public void setEndTime(Instant endTime) {
+    public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
 
-    public ElStore getElStore() {
-        return elStore;
+/*    public Store getStore() {
+        return store;
     }
 
-    public ElDeliveryInfo elStore(ElStore elStore) {
-        this.elStore = elStore;
+    public DeliveryInfo Store(Store store) {
+        this.store = store;
         return this;
     }
 
-    public void setElStore(ElStore elStore) {
-        this.elStore = elStore;
+    public void setStore(Store store) {
+        this.store = store;
     }
 
-    public ElType getElType() {
-        return elType;
+    public Type getType() {
+        return type;
     }
 
-    public ElDeliveryInfo elType(ElType elType) {
-        this.elType = elType;
+    public DeliveryInfo Type(Type type) {
+        this.type = type;
         return this;
     }
 
-    public void setElType(ElType elType) {
-        this.elType = elType;
-    }
+    public void setType(Type type) {
+        this.type = type;
+    }*/
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -102,10 +104,10 @@ public class ElDeliveryInfo implements Serializable {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof ElDeliveryInfo)) {
+        if (!(o instanceof DeliveryInfo)) {
             return false;
         }
-        return id != null && id.equals(((ElDeliveryInfo) o).id);
+        return id != null && id.equals(((DeliveryInfo) o).id);
     }
 
     @Override
@@ -115,11 +117,10 @@ public class ElDeliveryInfo implements Serializable {
 
     @Override
     public String toString() {
-        return "ElDeliveryInfo{" +
+        return "DeliveryInfo{" +
             "id=" + getId() +
             ", startingTime='" + getStartingTime() + "'" +
             ", endTime='" + getEndTime() + "'" +
             "}";
     }
 }
-*/

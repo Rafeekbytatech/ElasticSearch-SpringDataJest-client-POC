@@ -5,6 +5,7 @@ import com.diviso.graeshoppe.domain.StoreSettings;
 import com.diviso.graeshoppe.repository.StoreRepository;
 import com.diviso.graeshoppe.repository.search.*;
 import com.diviso.graeshoppe.service.StoreService;
+import com.diviso.graeshoppe.service.QueryService;
 import com.diviso.graeshoppe.service.StoreSettingsService;
 import com.diviso.graeshoppe.web.rest.errors.BadRequestAlertException;
 import com.diviso.graeshoppe.web.rest.util.HeaderUtil;
@@ -13,6 +14,8 @@ import com.diviso.graeshoppe.service.dto.StoreDTO;
 import com.diviso.graeshoppe.service.dto.StoreSettingsDTO;
 
 import io.github.jhipster.web.util.ResponseUtil;
+import io.searchbox.core.search.aggregation.TermsAggregation.Entry;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +41,8 @@ import com.diviso.graeshoppe.domain.Store;
 @RestController
 //@RequestMapping("/api")
 public class StoreResource {
-
+	@Autowired
+	QueryService queryService;
 	@Autowired
 	StoreSearchRepository storeSearchRepository;
 
@@ -215,8 +219,10 @@ public class StoreResource {
 		HttpHeaders headers = PaginationUtil.generateSearchPaginationHttpHeaders(query, page, "/api/_search/stores");
 		return ResponseEntity.ok().headers(headers).body(page.getContent());
 	}*/
-
-	
+	@GetMapping("/agg")
+	public List<Entry> getStoreByRegAggregation(Pageable pageable) {
+	return queryService.getStoreByRegAggregation(pageable);
+	}
 	
 
 }
