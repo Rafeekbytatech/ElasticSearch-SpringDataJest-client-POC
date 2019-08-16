@@ -3,7 +3,7 @@ package com.diviso.graeshoppe.service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import com.diviso.graeshoppe.domain.Store;
+import com.diviso.graeshoppe.domain.search.Store;
 
 import io.searchbox.core.search.aggregation.TermsAggregation.Entry;
 

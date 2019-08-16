@@ -30,7 +30,7 @@ import org.elasticsearch.search.aggregations.AggregationBuilders;
 import org.slf4j.Logger;
 
 import com.diviso.graeshoppe.domain.HeaderSearch;
-import com.diviso.graeshoppe.domain.Store;
+//import com.diviso.graeshoppe.domain.Store;
 import com.diviso.graeshoppe.domain.search.*;
 
 @Service
