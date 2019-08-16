@@ -22,6 +22,9 @@ import io.searchbox.core.search.aggregation.TermsAggregation.*;
 import org.elasticsearch.search.aggregations.AggregationBuilders;
 import org.slf4j.Logger;
 import com.diviso.graeshoppe.domain.search.*;
+
+@Service
+@Transactional
 public class QueryServiceImpl implements QueryService {
 	private final JestClient jestClient;
 	private final JestElasticsearchTemplate elasticsearchTemplate;
