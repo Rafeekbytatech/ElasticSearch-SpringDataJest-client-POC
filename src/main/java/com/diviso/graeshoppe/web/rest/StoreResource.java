@@ -223,6 +223,11 @@ public class StoreResource {
 	public List<Entry> getStoreByRegAggregation(Pageable pageable) {
 	return queryService.getStoreByRegAggregation(pageable);
 	}
+	@GetMapping("/header")
+	public Page<Store> headerSearch(String searchTerm, Pageable pageable) {
+		return queryService.headerSearch(searchTerm, pageable);
+		
+	}
 	
 
 }
