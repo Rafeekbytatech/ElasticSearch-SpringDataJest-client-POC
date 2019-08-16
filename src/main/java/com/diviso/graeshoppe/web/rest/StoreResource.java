@@ -224,7 +224,7 @@ public class StoreResource {
 	return queryService.getStoreByRegAggregation(pageable);
 	}
 	@GetMapping("/header/{searchTerm}")
-	public Page<Store> headerSearch(@PathVariable String searchTerm, Pageable pageable) {
+	public Page<com.diviso.graeshoppe.domain.search.Store> headerSearch(@PathVariable String searchTerm, Pageable pageable) {
 		return queryService.headerSearch(searchTerm, pageable);
 		
 	}
