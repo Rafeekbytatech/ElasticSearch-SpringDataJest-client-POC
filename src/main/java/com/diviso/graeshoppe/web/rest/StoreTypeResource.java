@@ -33,7 +33,7 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
  * REST controller for managing StoreType.
  */
 @RestController
-@RequestMapping("/api")
+//@RequestMapping("/api")
 public class StoreTypeResource {
 
     private final Logger log = LoggerFactory.getLogger(StoreTypeResource.class);

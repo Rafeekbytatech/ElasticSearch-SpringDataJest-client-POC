@@ -27,7 +27,7 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
  * REST controller for managing StoreAddress.
  */
 @RestController
-@RequestMapping("/api")
+//@RequestMapping("/api")
 public class StoreAddressResource {
 
     private final Logger log = LoggerFactory.getLogger(StoreAddressResource.class);

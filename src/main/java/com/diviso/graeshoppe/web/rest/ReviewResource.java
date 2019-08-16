@@ -33,7 +33,7 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
  * REST controller for managing Review.
  */
 @RestController
-@RequestMapping("/api")
+//@RequestMapping("/api")
 public class ReviewResource {
 
     private final Logger log = LoggerFactory.getLogger(ReviewResource.class);

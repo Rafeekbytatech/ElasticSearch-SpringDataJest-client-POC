@@ -33,7 +33,7 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
  * REST controller for managing Banner.
  */
 @RestController
-@RequestMapping("/api")
+//@RequestMapping("/api")
 public class BannerResource {
 
     private final Logger log = LoggerFactory.getLogger(BannerResource.class);

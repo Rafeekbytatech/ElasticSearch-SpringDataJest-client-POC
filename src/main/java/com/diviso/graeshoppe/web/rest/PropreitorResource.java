@@ -27,7 +27,7 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
  * REST controller for managing Propreitor.
  */
 @RestController
-@RequestMapping("/api")
+//@RequestMapping("/api")
 public class PropreitorResource {
 
     private final Logger log = LoggerFactory.getLogger(PropreitorResource.class);

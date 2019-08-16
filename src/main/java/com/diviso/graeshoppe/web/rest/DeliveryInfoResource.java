@@ -30,7 +30,7 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
  * REST controller for managing DeliveryInfo.
  */
 @RestController
-@RequestMapping("/api")
+//@RequestMapping("/api")
 public class DeliveryInfoResource {
 
 	private final Logger log = LoggerFactory.getLogger(DeliveryInfoResource.class);

@@ -33,7 +33,7 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
  * REST controller for managing Type.
  */
 @RestController
-@RequestMapping("/api")
+//@RequestMapping("/api")
 public class TypeResource {
 
     private final Logger log = LoggerFactory.getLogger(TypeResource.class);

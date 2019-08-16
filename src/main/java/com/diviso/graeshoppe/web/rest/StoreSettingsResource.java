@@ -27,7 +27,7 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
  * REST controller for managing StoreSettings.
  */
 @RestController
-@RequestMapping("/api")
+//@RequestMapping("/api")
 public class StoreSettingsResource {
 
     private final Logger log = LoggerFactory.getLogger(StoreSettingsResource.class);
