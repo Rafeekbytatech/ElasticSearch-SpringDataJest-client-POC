@@ -60,7 +60,7 @@ public class StoreServiceImpl implements StoreService {
 		store = storeRepository.save(store);
 		System.out.println("#############################################"+store);
 		StoreDTO resultDTO = storeMapper.toDto(store);
-		setStoreDetails( store );
+		//setStoreDetails( store );
 		//storeSearchRepository.save(store);
 		return resultDTO;
 	}
