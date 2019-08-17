@@ -121,6 +121,7 @@ public class QueryServiceImpl implements QueryService {
 		  elasticsearchOperations.queryForList(searchQuery, StoreType.class);
 		  for(StoreType storeType : storeTypeList)
 		  {
+				System.out.println("************Store###############"+storeType);
 	      convertToElasticStore(storeType.getStore());
 		  storeSet.add(convertToElasticStore(storeType.getStore()));
 		  } 
@@ -128,6 +129,7 @@ public class QueryServiceImpl implements QueryService {
 		
 	}
 	public Store convertToElasticStore( com.diviso.graeshoppe.domain.Store store) {
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!entering storedetails"+store);
 		com.diviso.graeshoppe.domain.search.Store elStore=new com.diviso.graeshoppe.domain.search.Store();
 
 		elStore.setId(store.getId());

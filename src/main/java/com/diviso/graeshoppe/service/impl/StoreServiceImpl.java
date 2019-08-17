@@ -60,7 +60,7 @@ public class StoreServiceImpl implements StoreService {
 		store = storeRepository.save(store);
 		System.out.println("#############################################"+store);
 		StoreDTO resultDTO = storeMapper.toDto(store);
-		//setStoreDetails( store );
+		setStoreDetails( store );
 		//storeSearchRepository.save(store);
 		return resultDTO;
 	}
@@ -75,7 +75,7 @@ public class StoreServiceImpl implements StoreService {
 	
 	
 	public void setStoreDetails(Store result) {
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"+result);
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!entering storedetails"+result);
 		com.diviso.graeshoppe.domain.search.Store s=new com.diviso.graeshoppe.domain.search.Store();
 
 		s.setId(result.getId());
