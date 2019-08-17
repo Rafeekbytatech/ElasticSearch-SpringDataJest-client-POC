@@ -120,6 +120,7 @@ public class QueryServiceImpl implements QueryService {
 		  
 		  List<StoreType> storeTypeList =
 		  elasticsearchOperations.queryForList(searchQuery, StoreType.class);
+		  System.out.println("************Store###########"+storeTypeList.size());
 		  for(StoreType storeType : storeTypeList)
 		  {
 				System.out.println("************Store###############"+storeType);
