@@ -108,18 +108,20 @@ public class QueryServiceImpl implements QueryService {
 	@Override
 	public Page<Store> facetSearch(List<String> searchTerm, Pageable pageable) {
 		System.out.println("************ENTRRRRRRRRStore###############");
+		 List<StoreType> storeTypeList = null;
 		Set<Store> storeSet = new HashSet<>();
 		  FetchSourceFilterBuilder sourceFilter = new FetchSourceFilterBuilder();
 		 sourceFilter.withExcludes("storetype", "storesettings","storeaddress");
-		  
+		  for(String term:searchTerm) {
 		  SearchQuery searchQuery = new NativeSearchQueryBuilder()
-		  .withQuery(QueryBuilders.termQuery("name.keyword","arabi" ))
+		  .withQuery(QueryBuilders.termQuery("name.keyword",term ))
 		  .withIndices("storetype").withTypes("storetype").withSourceFilter(
 		  sourceFilter.build()).build();
 		  
-		  List<StoreType> storeTypeList =
+		  storeTypeList =
 		  elasticsearchOperations.queryForList(searchQuery, StoreType.class);
 		  System.out.println("************Store###########"+storeTypeList.size());
+		  }
 		  for(StoreType storeType : storeTypeList)
 		  {
 				System.out.println("************Store###############"+storeType);
