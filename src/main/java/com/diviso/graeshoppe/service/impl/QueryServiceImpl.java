@@ -26,10 +26,12 @@ import io.searchbox.core.SearchResult;
 import io.searchbox.core.search.aggregation.TermsAggregation;
 import io.searchbox.core.search.aggregation.TermsAggregation.*;
 
+import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.aggregations.AggregationBuilders;
 import org.slf4j.Logger;
 
 import com.diviso.graeshoppe.domain.HeaderSearch;
+import com.diviso.graeshoppe.domain.StoreType;
 //import com.diviso.graeshoppe.domain.Store;
 import com.diviso.graeshoppe.domain.search.*;
 
@@ -62,6 +64,7 @@ public class QueryServiceImpl implements QueryService {
 	
 	
 	public Page<Store> headerSearch(String searchTerm, Pageable pageable) {
+		System.out.println("************Storestart*****************");
 		Set<Store> storeSet = new HashSet<Store>();
 		Set<HeaderSearch> values = new HashSet<HeaderSearch>();
 
@@ -74,12 +77,13 @@ public class QueryServiceImpl implements QueryService {
 
 				for (SearchResult.Hit<JsonObject, Void> searchHit : response.getHits(JsonObject.class)) {
 					HeaderSearch result = new HeaderSearch();
-
+					System.out.println("************Storesloop*****************");
 					if (searchHit.index.equals("store")) {
 						result.setStoreNo(searchHit.source.get("regNo").getAsString());
 						System.out.println("************Store*****************" + result.getStoreNo());
 					} else {
 						result.setStoreNo(searchHit.source.get("iDPcode").getAsString());
+						System.out.println("************Store########################" + result.getStoreNo());
 					}
 
 					values.add(result);
@@ -99,6 +103,66 @@ public class QueryServiceImpl implements QueryService {
 		return new PageImpl(storeList);
 
 	}
-	
-	
+
+
+	@Override
+	public Page<Store> facetSearch(List<String> searchTerm, Pageable pageable) {
+		Set<Store> storeSet = new HashSet<>();
+		  FetchSourceFilterBuilder sourceFilter = new FetchSourceFilterBuilder();
+		 sourceFilter.withExcludes("storetype", "storesettings","storeaddress");
+		  
+		  SearchQuery searchQuery = new NativeSearchQueryBuilder()
+		  .withQuery(QueryBuilders.boolQuery().must(QueryBuilders.termQuery(
+		  "name.keyword",searchTerm )))
+		  .withIndices("storetype").withTypes("storetype").withSourceFilter(
+		  sourceFilter.build()).build();
+		  
+		  List<StoreType> storeTypeList =
+		  elasticsearchOperations.queryForList(searchQuery, StoreType.class);
+		  for(StoreType storeType : storeTypeList)
+		  {
+	      convertToElasticStore(storeType.getStore());
+		  storeSet.add(convertToElasticStore(storeType.getStore()));
+		  } 
+		  return new PageImpl(new ArrayList<Store>(storeSet));
+		
+	}
+	public Store convertToElasticStore( com.diviso.graeshoppe.domain.Store store) {
+		com.diviso.graeshoppe.domain.search.Store elStore=new com.diviso.graeshoppe.domain.search.Store();
+
+		elStore.setId(store.getId());
+
+		elStore.setRegNo(store.getRegNo());
+
+		elStore.setName(store.getName());
+
+		elStore.setImage(store.getImage());
+
+		elStore.setImageContentType(store.getImageContentType());
+
+		elStore.setTotalRating(store.getTotalRating());
+
+		elStore.setLocation(store.getLocation());
+
+		elStore.setLocationName(store.getLocationName());
+
+		elStore.setContactNo(store.getContactNo());
+
+		elStore.setOpeningTime(Date.from(store.getOpeningTime()));
+
+		elStore.setEmail(store.getEmail());
+
+		elStore.setClosingTime(Date.from(store.getClosingTime()));
+
+		elStore.setInfo(store.getInfo());
+
+		elStore.setMinAmount(store.getMinAmount());
+
+		elStore.setMaxDeliveryTime(Date.from(store.getMaxDeliveryTime()));
+		elStore.setPropreitor(store.getPropreitor());
+		elStore.setStoreAddress(store.getStoreAddress());
+		elStore.setStoreSettings(store.getStoreSettings());
+		
+	return elStore;
+	}
 }

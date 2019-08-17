@@ -12,7 +12,7 @@ import com.diviso.graeshoppe.web.rest.util.HeaderUtil;
 import com.diviso.graeshoppe.web.rest.util.PaginationUtil;
 import com.diviso.graeshoppe.service.dto.StoreDTO;
 import com.diviso.graeshoppe.service.dto.StoreSettingsDTO;
-
+import com.diviso.graeshoppe.service.dto.FacetSearchDTO;
 import io.github.jhipster.web.util.ResponseUtil;
 import io.searchbox.core.search.aggregation.TermsAggregation.Entry;
 
@@ -227,6 +227,10 @@ public class StoreResource {
 	public Page<com.diviso.graeshoppe.domain.search.Store> headerSearch(@PathVariable String searchTerm, Pageable pageable) {
 		return queryService.headerSearch(searchTerm, pageable);
 		
+	}
+	@GetMapping("/facetSearch")
+	public Page<com.diviso.graeshoppe.domain.search.Store > facetSearch(@RequestBody FacetSearchDTO facetSearchDTO, Pageable pageable){
+		return queryService.facetSearch(facetSearchDTO.getSecondFacet(),pageable);
 	}
 	
 

@@ -14,5 +14,10 @@ public class HeaderSearch {
 	public void setStoreNo(String storeNo) {
 		this.storeNo = storeNo;
 	}
+
+	@Override
+	public String toString() {
+		return "HeaderSearch [storeNo=" + storeNo + "]";
+	}
 	
 }

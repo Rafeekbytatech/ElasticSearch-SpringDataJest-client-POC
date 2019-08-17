@@ -12,4 +12,6 @@ import java.util.*;
 public interface QueryService {
 	public List<Entry> getStoreByRegAggregation(Pageable pageable) ;
 	public Page<Store> headerSearch(String searchTerm, Pageable pageable) ;
+	public Page<Store> facetSearch(List<String> searchTerm, Pageable pageable) ;
+
 }
