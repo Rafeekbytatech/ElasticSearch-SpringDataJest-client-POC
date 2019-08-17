@@ -230,7 +230,9 @@ public class StoreResource {
 	}
 	@GetMapping("/facetSearch")
 	public Page<com.diviso.graeshoppe.domain.search.Store > facetSearch(@RequestBody FacetSearchDTO facetSearchDTO, Pageable pageable){
-		return queryService.facetSearch(facetSearchDTO.getSecondFacet(),pageable);
+		List<String> s=facetSearchDTO.getSecondFacet();
+		System.out.println("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"+s);
+		return queryService.facetSearch(s,pageable);
 	}
 	
 

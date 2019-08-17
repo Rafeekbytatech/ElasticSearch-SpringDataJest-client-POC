@@ -107,6 +107,7 @@ public class QueryServiceImpl implements QueryService {
 
 	@Override
 	public Page<Store> facetSearch(List<String> searchTerm, Pageable pageable) {
+		System.out.println("************ENTRRRRRRRRStore###############");
 		Set<Store> storeSet = new HashSet<>();
 		  FetchSourceFilterBuilder sourceFilter = new FetchSourceFilterBuilder();
 		 sourceFilter.withExcludes("storetype", "storesettings","storeaddress");
