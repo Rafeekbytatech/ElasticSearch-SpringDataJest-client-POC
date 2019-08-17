@@ -113,8 +113,7 @@ public class QueryServiceImpl implements QueryService {
 		 sourceFilter.withExcludes("storetype", "storesettings","storeaddress");
 		  
 		  SearchQuery searchQuery = new NativeSearchQueryBuilder()
-		  .withQuery(QueryBuilders.boolQuery().must(QueryBuilders.termQuery(
-		  "name.keyword",searchTerm )))
+		  .withQuery(QueryBuilders.termQuery("name.keyword","arabi" ))
 		  .withIndices("storetype").withTypes("storetype").withSourceFilter(
 		  sourceFilter.build()).build();
 		  
